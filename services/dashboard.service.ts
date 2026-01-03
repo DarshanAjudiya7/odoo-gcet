@@ -27,9 +27,11 @@ export interface RecentActivity {
 export async function getDashboardStats(): Promise<DashboardStats> {
     await connectDB();
 
-    // Normalize today date boundary
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    // Normalize today date boundary to UTC to match API routes
+    const now = new Date();
+    // Start of today (00:00:00 UTC)
+    const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));
+    // Start of tomorrow (00:00:00 UTC)
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
 
@@ -63,8 +65,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
 
 export async function getRecentCheckIns(): Promise<RecentActivity[]> {
     await connectDB();
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const now = new Date();
+    const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0));
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
 

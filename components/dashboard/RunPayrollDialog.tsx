@@ -21,7 +21,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 // @ts-ignore
 import { useFormState, useFormStatus } from "react-dom";
-import { runPayroll } from "@/app/actions/payroll.actions";
+import { runPayroll } from "@/actions/admin/payroll.actions";
 import { Loader2, DollarSign } from "lucide-react";
 import { toast } from "sonner";
 
@@ -40,7 +40,7 @@ const initialState = {
     success: false
 };
 
-export function RunPayrollDialog() {
+export function RunPayrollDialog({ trigger }: { trigger?: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const [state, formAction] = useFormState(runPayroll, initialState);
 
@@ -54,7 +54,7 @@ export function RunPayrollDialog() {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button>Run Payroll</Button>
+                {trigger || <Button>Run Payroll</Button>}
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

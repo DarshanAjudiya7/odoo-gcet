@@ -1,11 +1,18 @@
 import { Suspense } from "react";
-import { getDashboardStats } from "@/lib/services/dashboard.service";
+import { getDashboardStats } from "@/services/dashboard.service";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { requireRole } from "@/lib/auth";
 import { Users, UserCheck, UserMinus, CalendarOff, Settings, Shield, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
+// 📊 app/(protected)/admin/dashboard/page.tsx
+// This page:
+// - Fetches dashboard metrics
+// - Displays admin insights
+// - Uses server components for data
+// - Shows proper loading & empty states
 
 export const dynamic = "force-dynamic";
 
@@ -63,7 +70,7 @@ async function AdminDashboardContent() {
                         </div>
                     </div>
                     <Button asChild className="w-full" variant="outline">
-                        <Link href="/dashboard/users">Manage Users</Link>
+                        <Link href="/admin/employees">Manage Users</Link>
                     </Button>
                 </div>
 
@@ -78,7 +85,7 @@ async function AdminDashboardContent() {
                         </div>
                     </div>
                     <Button asChild className="w-full" variant="outline">
-                        <Link href="/dashboard/leaves">View Requests</Link>
+                        <Link href="/admin/leaves">View Requests</Link>
                     </Button>
                 </div>
 

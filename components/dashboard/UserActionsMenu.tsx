@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
-import { toggleUserStatus } from "@/app/actions/user.actions";
+import { toggleUserStatus } from "@/actions/admin/employee.actions";
 import { toast } from "sonner";
 
 interface UserActionsMenuProps {

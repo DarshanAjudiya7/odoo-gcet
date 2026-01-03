@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, MapPin, Clock, CheckCircle2, LogOut } from "lucide-react";
-import { checkInAction, checkOutAction } from "@/app/actions/attendance.actions";
+import { checkInAction, checkOutAction } from "@/actions/employee/attendance.actions";
 import { toast } from "sonner"; // Assuming sonner is available or we use basic alert
 import { motion } from "framer-motion";
 
@@ -68,8 +68,8 @@ export function CheckInInterface({ initialData }: CheckInProps) {
                 <div className="flex items-center justify-center gap-2 text-sm font-medium">
                     Status:
                     <span className={`px-2 py-1 rounded-full text-xs ${status === "checked-in" ? "bg-green-100 text-green-700" :
-                            status === "checked-out" ? "bg-gray-100 text-gray-700" :
-                                "bg-yellow-100 text-yellow-700"
+                        status === "checked-out" ? "bg-gray-100 text-gray-700" :
+                            "bg-yellow-100 text-yellow-700"
                         }`}>
                         {status === "none" ? "Not Checked In" :
                             status === "checked-in" ? "Currently Working" : "Shift Completed"}

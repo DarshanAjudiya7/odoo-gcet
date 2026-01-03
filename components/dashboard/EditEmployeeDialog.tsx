@@ -20,7 +20,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useFormStatus } from "react-dom";
-import { updateUser } from "@/app/actions/user.actions";
+import { updateUser } from "@/actions/admin/employee.actions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 

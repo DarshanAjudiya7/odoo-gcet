@@ -59,6 +59,10 @@ export async function checkInAction() {
             status: "Present"
         });
 
+        revalidatePath("/admin/dashboard");
+        revalidatePath("/employee/dashboard");
+        revalidatePath("/admin/attendance");
+        revalidatePath("/employee/attendance");
         revalidatePath("/dashboard");
         revalidatePath("/dashboard/attendance");
         return { success: true, message: "Checked in successfully" };
@@ -93,6 +97,10 @@ export async function checkOutAction() {
         record.checkOut = now;
         await record.save();
 
+        revalidatePath("/admin/dashboard");
+        revalidatePath("/employee/dashboard");
+        revalidatePath("/admin/attendance");
+        revalidatePath("/employee/attendance");
         revalidatePath("/dashboard");
         revalidatePath("/dashboard/attendance");
         return { success: true, message: "Checked out successfully" };

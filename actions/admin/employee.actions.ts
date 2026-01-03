@@ -77,7 +77,7 @@ export async function createUser(prevState: any, formData: FormData) {
             isActive: true,
         });
 
-        revalidatePath("/dashboard/users");
+        revalidatePath("/admin/employees");
 
         return {
             success: true,
@@ -125,7 +125,7 @@ export async function updateUser(prevState: any, formData: FormData) {
         const data = validation.data;
 
         await User.findByIdAndUpdate(userId, data);
-        revalidatePath("/dashboard/users");
+        revalidatePath("/admin/employees");
 
         return { success: true, message: "User updated successfully" };
     } catch (error: any) {
@@ -148,7 +148,7 @@ export async function toggleUserStatus(userId: string) {
         user.isActive = !user.isActive;
         await user.save();
 
-        revalidatePath("/dashboard/users");
+        revalidatePath("/admin/employees");
         return { success: true, message: `User ${user.isActive ? 'activated' : 'deactivated'}` };
     } catch (error: any) {
         return { success: false, message: error.message };

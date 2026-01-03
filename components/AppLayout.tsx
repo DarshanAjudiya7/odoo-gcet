@@ -1,5 +1,5 @@
-import { Header } from "@/components/Header";
-import { Sidebar } from "@/components/Sidebar";
+import { Header } from "@/components/layout/Topbar";
+import { Sidebar } from "@/components/layout/Sidebar";
 
 export function AppLayout({ children, role }: { children: React.ReactNode, role?: "admin" | "employee" }) {
     return (

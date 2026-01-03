@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Plus, Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
-import { createUser } from "@/app/actions/user.actions";
+import { createUser } from "@/actions/admin/employee.actions";
 import { toast } from "sonner"; // Assuming sonner or use standard toast. Usually standard toast might be in hooks/use-toast
 
 // Submit button component for pending state
@@ -42,7 +42,7 @@ function SubmitButton() {
     );
 }
 
-export function AddEmployeeDialog() {
+export function AddEmployeeDialog({ trigger }: { trigger?: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const [state, setState] = useState<any>(null);
 
@@ -51,17 +51,20 @@ export function AddEmployeeDialog() {
         setState(result);
         if (result.success) {
             setOpen(false);
-            // Replace with real toast if available, otherwise simple alert for hackathon reliability
-            alert(result.message);
+            toast.success(result.message);
+        } else {
+            toast.error(result.message || "Failed to add employee");
         }
     }
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90 shadow-sm transition-all hover:scale-105">
-                    <Plus className="mr-2 h-4 w-4" /> Add Employee
-                </Button>
+                {trigger || (
+                    <Button className="bg-primary hover:bg-primary/90 shadow-sm transition-all hover:scale-105">
+                        <Plus className="mr-2 h-4 w-4" /> Add Employee
+                    </Button>
+                )}
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

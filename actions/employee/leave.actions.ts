@@ -59,6 +59,10 @@ export async function requestLeave(prevState: any, formData: FormData) {
             status: "Pending"
         });
 
+        revalidatePath("/admin/dashboard");
+        revalidatePath("/admin/leaves");
+        revalidatePath("/employee/dashboard");
+        revalidatePath("/employee/leaves");
         revalidatePath("/dashboard/leaves");
         return { success: true, message: "Leave requested successfully" };
 
@@ -107,7 +111,13 @@ export async function updateLeaveStatus(leaveId: string, status: "Approved" | "R
             }
         }
 
+        revalidatePath("/admin/dashboard");
+        revalidatePath("/admin/leaves");
+        revalidatePath("/employee/dashboard");
+        revalidatePath("/employee/leaves");
         revalidatePath("/dashboard/leaves");
+        revalidatePath("/admin/attendance");
+        revalidatePath("/employee/attendance");
         return { success: true, message: `Leave ${status}` };
 
     } catch (e: any) {

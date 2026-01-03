@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import {
     Select,
     SelectContent,
@@ -22,8 +22,9 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Plus, Loader2 } from "lucide-react";
-import { requestLeave } from "@/app/actions/leave.actions";
+import { requestLeave } from "@/actions/employee/leave.actions";
 import { useFormStatus } from "react-dom";
+import { toast } from "sonner";
 
 function SubmitButton() {
     const { pending } = useFormStatus();
@@ -44,7 +45,9 @@ export function RequestLeaveDialog() {
         setState(result);
         if (result.success) {
             setOpen(false);
-            alert("Leave Requested!"); // Replace with toast
+            toast.success("Leave requested successfully!");
+        } else {
+            toast.error(result.message || "Failed to request leave");
         }
     }
 

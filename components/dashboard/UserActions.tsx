@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { EditEmployeeDialog } from "./EditEmployeeDialog";
-import { toggleUserStatus } from "@/app/actions/user.actions";
+import { toggleUserStatus } from "@/actions/admin/employee.actions";
 import { toast } from "sonner";
 
 export function UserActions({ user }: { user: any }) {

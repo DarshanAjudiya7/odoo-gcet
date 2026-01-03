@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckInInterface } from "@/components/dashboard/CheckInInterface";
-import { getTodayAttendance } from "@/app/actions/attendance.actions";
+import { getTodayAttendance } from "@/actions/employee/attendance.actions";
 
 export default async function NewAttendancePage() {
     const data = await getTodayAttendance();

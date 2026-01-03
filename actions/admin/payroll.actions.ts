@@ -45,7 +45,7 @@ export async function runPayroll(prevState: any, formData: FormData) {
             await Payroll.insertMany(payrolls);
         }
 
-        revalidatePath("/dashboard/payroll");
+        revalidatePath("/admin/payroll");
         revalidatePath("/dashboard/reports");
         return { success: true, message: `Successfully ran payroll for ${users.length} employees.` };
     } catch (error: any) {

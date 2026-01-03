@@ -6,7 +6,6 @@ import { connectDB } from "@/lib/db";
 import User from "@/models/User";
 import { Mail, Phone, MoreHorizontal, Briefcase } from "lucide-react";
 import { UserSearch } from "./search";
-import { UserActionsMenu } from "@/components/dashboard/UserActionsMenu";
 import { AddEmployeeDialog } from "@/components/dashboard/AddEmployeeDialog";
 import { UserActions } from "@/components/dashboard/UserActions";
 import { getAuthUser } from "@/lib/auth";
@@ -67,7 +66,7 @@ export default async function UsersPage({
                         <Card key={user._id.toString()} className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-muted/60">
                             <CardHeader className="relative p-0 h-24 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-900 dark:to-indigo-900">
                                 <div className="absolute right-2 top-2">
-                                    <UserActionsMenu userId={user._id.toString()} isActive={user.isActive} />
+                                    <UserActions user={JSON.parse(JSON.stringify(user))} />
                                 </div>
                             </CardHeader>
                             <CardContent className="pt-0 pb-6 px-6">

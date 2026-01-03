@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Check, X, Loader2 } from "lucide-react";
-import { updateLeaveStatus } from "@/app/actions/leave.actions";
+import { updateLeaveStatus } from "@/actions/employee/leave.actions";
 import { useState } from "react";
 
 export function LeaveActions({ id, status }: { id: string, status: string }) {

@@ -17,17 +17,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { SignOutButton } from "@clerk/nextjs";
 
 const sidebarItems = [
-    { icon: LayoutDashboard, label: "Overview", href: "/dashboard", roles: ["admin", "employee"] },
-    { icon: ShieldCheck, label: "Admin Panel", href: "/admin", roles: ["admin"] },
-    { icon: Users, label: "Employees", href: "/dashboard/users", roles: ["admin"] },
-    { icon: CalendarCheck, label: "Attendance", href: "/dashboard/attendance", roles: ["admin", "employee"] },
-    { icon: CalendarDays, label: "Leaves", href: "/dashboard/leaves", roles: ["admin", "employee"] },
-    { icon: Banknote, label: "Payroll", href: "/dashboard/payroll", roles: ["admin", "employee"] },
-    { icon: FileBarChart, label: "Reports", href: "/dashboard/reports", roles: ["admin"] },
+    { icon: LayoutDashboard, label: "Overview", href: "/admin/dashboard", roles: ["admin"] },
+    { icon: LayoutDashboard, label: "Overview", href: "/employee/dashboard", roles: ["employee"] },
+    { icon: ShieldCheck, label: "Admin Panel", href: "/admin/dashboard", roles: ["admin"] },
+    { icon: Users, label: "Employees", href: "/admin/employees", roles: ["admin"] },
+    { icon: CalendarCheck, label: "Attendance", href: "/admin/attendance", roles: ["admin"] },
+    { icon: CalendarCheck, label: "Attendance", href: "/employee/attendance", roles: ["employee"] },
+    { icon: CalendarDays, label: "Leaves", href: "/admin/leaves", roles: ["admin"] },
+    { icon: CalendarDays, label: "Leaves", href: "/employee/leaves", roles: ["employee"] },
+    { icon: Banknote, label: "Payroll", href: "/admin/payroll", roles: ["admin"] },
+    { icon: Banknote, label: "Payroll", href: "/employee/payroll", roles: ["employee"] },
+    { icon: FileBarChart, label: "Reports", href: "/admin/reports", roles: ["admin"] },
 ];
 
 export function Sidebar({ role = "employee" }: { role?: "admin" | "employee" }) {

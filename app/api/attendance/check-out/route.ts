@@ -2,6 +2,7 @@ import { connectDB } from "@/lib/db";
 import Attendance from "@/models/Attendance";
 import { getAuthUser } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: Request) {
     try {
@@ -46,6 +47,13 @@ export async function POST(req: Request) {
         // For simplicity, we keep it as Present unless logic dictates otherwise
 
         await record.save();
+
+        revalidatePath("/admin/dashboard");
+        revalidatePath("/employee/dashboard");
+        revalidatePath("/admin/attendance");
+        revalidatePath("/employee/attendance");
+        revalidatePath("/dashboard");
+        revalidatePath("/dashboard/attendance");
 
         return NextResponse.json(record, { status: 200 });
 
